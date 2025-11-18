@@ -146,6 +146,7 @@ else
 	var spriteXOffset = global.KSW_FishList[ds_list_find_value(selectionList,selection)].xOffset;
 	var spriteYOffset = global.KSW_FishList[ds_list_find_value(selectionList,selection)].yOffset;
 	var rarity = global.KSW_FishList[ds_list_find_value(selectionList,selection)].rarity;
+    var isCaught = global.KSW_FishList[ds_list_find_value(selectionList,selection)].isCaught != 0;
 	var isCaughtShiny = (global.KSW_FishList[ds_list_find_value(selectionList,selection)].isCaughtShiny != 0);
 	var backgroundPalette = spr_KSW_UI_CaughtBox_Palette_Locked;
 	if (global.KSW_FishList[ds_list_find_value(selectionList,selection)].isCaught != 0) backgroundPalette = global.KSW_FishList[ds_list_find_value(selectionList,selection)].caughtBoxPalette;
@@ -185,7 +186,7 @@ else
 	draw_clear_alpha(c_black,0);
 	
 	if ((global.shaders) and (spritePalette != -1)) pal_swap_set(spritePalette,targetPaletteIndex,false);
-	draw_sprite(spriteIndex,selectionImageIndex,1 + sprite_get_xoffset(spriteIndex),1 + sprite_get_yoffset(spriteIndex));
+	draw_sprite_ext(spriteIndex,selectionImageIndex,1 + sprite_get_xoffset(spriteIndex),1 + sprite_get_yoffset(spriteIndex), 1, 1, 0, isCaught ? c_white : c_black, 1);
 	if ((global.shaders) and (spritePalette != -1)) pal_swap_reset();
 	
 	surface_reset_target();
@@ -283,6 +284,13 @@ else
 	
 	#region Button Hints
 	var exitIcon = "";
+    
+    var targetIcon = global.UI_IconBindings[? string(input_binding_get("L"))];
+    if (targetIcon != undefined) draw_sprite(targetIcon,0,2,(room_height/2) - 6 + (2 * (buttonInputTimerComponent_LTimer != -1)));
+    
+    var targetIcon = global.UI_IconBindings[? string(input_binding_get("R"))];
+    if (targetIcon != undefined) draw_sprite(targetIcon,0,238 - sprite_get_width(targetIcon),(room_height/2) - 6 + (2 * (buttonInputTimerComponent_RTimer != -1)));
+    
 	var targetIcon = global.UI_IconBindings[? string(input_binding_get("B"))];
 	if (targetIcon != undefined) exitIcon = "[" + sprite_get_name(targetIcon) + "]";
 	
@@ -294,6 +302,7 @@ else
 	
 	if ((global.KSW_FishList[ds_list_find_value(selectionList,selection)].isCaught != 0) and (global.KSW_FishList[ds_list_find_value(selectionList,selection)].isCaughtShiny != 0))
 		scribble(shinyIcon + "SHINY").align(fa_left).draw(4,room_height - 32 + (2 * (buttonInputTimerComponent_YTimer != -1)));
+    
 	#endregion
 	#endregion
 }

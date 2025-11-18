@@ -49,7 +49,7 @@ if (canSelect)
 			scr_KSW_Menu_Component_SwitchPage_R();
 		}
 		
-		if (((input_check_pressed("A",playerNum)) or (input_check_pressed("start",playerNum))) and (global.KSW_FishList[ds_list_find_value(selectionList,selection)].isCaught != 0))
+		if (((input_check_pressed("A",playerNum)) or (input_check_pressed("start",playerNum))))
 		{
 			scr_PlaySfx(snd_KSW_ButtonYes);
 			
@@ -58,7 +58,7 @@ if (canSelect)
 			isZoomed = true;
 			selectionImageIndex = 0;
 			selectionStarCount = 0;
-			if (selectionStarCount < global.KSW_FishList[ds_list_find_value(selectionList,selection)].rarity) selectionStarTimer = 20;
+			if (selectionStarCount < global.KSW_FishList[ds_list_find_value(selectionList,selection)].rarity && global.KSW_FishList[ds_list_find_value(selectionList,selection)].isCaught != 0) selectionStarTimer = 20;
 		}
 		
 		if ((input_check_pressed("Y",playerNum)) and (global.KSW_FishList[ds_list_find_value(selectionList,selection)].isCaught != 0) and (global.KSW_FishList[ds_list_find_value(selectionList,selection)].isCaughtShiny != 0))
@@ -98,6 +98,40 @@ if (canSelect)
 			isZoomed = false;
 			zoomAlpha = 0;
 			selectionStarTimer = -1;
+		}
+        
+        if (input_check_pressed("L",playerNum))
+		{
+            selection--
+            if (selection < page * pageSelectionCount)
+                scr_KSW_Menu_Component_SwitchPage_L();
+            if (selection < 0)
+                selection = global.KSW_FishCount - 1
+                
+			scr_PlaySfx(snd_KSW_ButtonYes);
+			
+			if (global.KSW_FishList[ds_list_find_value(selectionList,selection)].catchAudio != -1) scr_PlaySfx(global.KSW_FishList[ds_list_find_value(selectionList,selection)].catchAudio);
+			
+			selectionImageIndex = 0;
+			selectionStarCount = 0;
+			if (selectionStarCount < global.KSW_FishList[ds_list_find_value(selectionList,selection)].rarity && global.KSW_FishList[ds_list_find_value(selectionList,selection)].isCaught != 0) selectionStarTimer = 20;
+		}
+        
+        if (input_check_pressed("R",playerNum))
+		{
+            selection++
+            if (selection > min(((page + 1) * pageSelectionCount),selectionCount) - 1)
+                scr_KSW_Menu_Component_SwitchPage_R();
+            if (selection > global.KSW_FishCount - 1)
+                selection = 0
+                
+			scr_PlaySfx(snd_KSW_ButtonYes);
+			
+			if (global.KSW_FishList[ds_list_find_value(selectionList,selection)].catchAudio != -1) scr_PlaySfx(global.KSW_FishList[ds_list_find_value(selectionList,selection)].catchAudio);
+			
+			selectionImageIndex = 0;
+			selectionStarCount = 0;
+			if (selectionStarCount < global.KSW_FishList[ds_list_find_value(selectionList,selection)].rarity && global.KSW_FishList[ds_list_find_value(selectionList,selection)].isCaught != 0) selectionStarTimer = 20;
 		}
 	}
 }
