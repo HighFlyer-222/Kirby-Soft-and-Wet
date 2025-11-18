@@ -245,6 +245,10 @@ else
 		scribble(targetName).align(fa_center).blend(c_white,zoomAlpha).draw(room_width / 2,6);
 	}
 	#endregion
+    
+    #region high flyer awesome mod content
+    scribble(global.KSW_FishList[ds_list_find_value(selectionList,selection)].franchise).align(fa_center, fa_bottom).blend(c_white,zoomAlpha).draw(room_width / 2, room_height - 6)
+    #endregion
 	
 	#region Rarity
 	if (global.KSW_FishList[ds_list_find_value(selectionList,selection)].isCaught != 0)
@@ -289,11 +293,7 @@ else
 	scribble(exitIcon + "BACK").draw(4,room_height - 16 + (2 * (buttonInputTimerComponent_BTimer != -1)));
 	
 	if ((global.KSW_FishList[ds_list_find_value(selectionList,selection)].isCaught != 0) and (global.KSW_FishList[ds_list_find_value(selectionList,selection)].isCaughtShiny != 0))
-	{
-		var shinyText = scribble(shinyIcon + "SHINY").align(fa_center);
-		
-		shinyText.draw(room_width / 2,room_height - 16 + (2 * (buttonInputTimerComponent_YTimer != -1)));
-	}
+		scribble(shinyIcon + "SHINY").align(fa_left).draw(4,room_height - 32 + (2 * (buttonInputTimerComponent_YTimer != -1)));
 	#endregion
 	#endregion
 }
