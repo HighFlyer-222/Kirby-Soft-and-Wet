@@ -18,8 +18,11 @@ if (state == KSW_GameStates.idle)
 	scribble(string(formattedCoins) + "[spr_KSW_UI_Coin]").align(fa_right).draw(236,13 - hintOffset - (2 * (displayedCoins_YOffsetTimer != -1)));
 	#endregion
 	
-	#region Catch Combo
+	#region Catch Combo and Shiny Rate
 	if ((global.KSW_CurrentFishCombo > 1) and (!canOffset)) scribble("[#FF7F94] CATCH COMBO " + string(global.KSW_CurrentFishCombo) + "[/color]").align(fa_right).draw(236,120 - (2 * (catchCombo_YOffsetTimer != -1)));
+	var hasShinyBait = (global.KSW_EquippedBaitID[playerNum] == global.KSW_BaitIDs[? "moreShinies"]);
+	var shinyRate = 100 / max(31 - (hasShinyBait * 20),1024 - (global.KSW_CurrentFishCombo * 20) - (hasShinyBait * 333));
+	if (!canOffset) scribble("[#FF7F94] SHINY RATE " + string(shinyRate) + "%[/color]").align(fa_right).draw(236,130 - (2 * (catchCombo_YOffsetTimer != -1)));
 	#endregion
 }
 
