@@ -43,6 +43,7 @@ catchInput_UpTriggered = false;
 catchInput_DownTriggered = false;
 catchInput_LeftTriggered = false;
 catchInput_RightTriggered = false;
+catchInput_ATriggered = false;
 
 canGoToMenu = false;
 canGoToFishbook = false;

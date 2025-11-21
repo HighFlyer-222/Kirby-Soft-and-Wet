@@ -146,12 +146,39 @@ if (!localPause)
 				}
 			}
 			
+			if (global.KSW_EquippedBaitID[playerNum] == global.KSW_BaitIDs[? "centerInput"] && (input_check_pressed("A",playerNum)) || (input_check_pressed("start",playerNum)))
+			{
+				if (catchInput_ATriggered)
+				{
+					success = true;
+					
+					var parTargetX = 174;
+					var parTargetY = 64;
+					
+					with (obj_KSW_Player)
+					{
+						scr_KSW_ParticleSet_Star(x,y,0);
+						scr_KSW_ParticleSet_Star(x,y,90);
+						scr_KSW_ParticleSet_Star(x,y,180);
+						scr_KSW_ParticleSet_Star(x,y,270);
+						
+						scr_ChangeSprite(sprUpAnim);
+					}
+				}
+				else
+				{
+					failed = true;
+				}
+			}
+                
+				
 			if (success)
 			{
 				catchInput_UpTriggered = false;
 				catchInput_DownTriggered = false;
 				catchInput_LeftTriggered = false;
 				catchInput_RightTriggered = false;
+				catchInput_ATriggered = false;
 				
 				catchInput_NextLineTimer = catchInput_NextLineTimerMax;
 				
@@ -556,6 +583,7 @@ if (!localPause)
 				state = KSW_GameStates.catching;
 				
 				var pityRate = 3;
+				if (global.KSW_EquippedBaitID[playerNum] == global.KSW_BaitIDs[? "increasedPity"]) pityRate = 30;
 				for (var i = 0; i < pityRate; i++)
 				{
 					currentFish = currentFishPool[irandom_range(0,array_length(currentFishPool) - 1)];
@@ -563,6 +591,7 @@ if (!localPause)
 				}
 				
 				if (global.KSW_DebugRig != -1) currentFish = global.KSW_DebugRig;
+				if (global.KSW_EquippedBaitID[playerNum] == global.KSW_BaitIDs[? "grapeBait"]) currentFish = global.KSW_FishIDs[? "Grapes"];
 				
 				var shinyRng = 1;
 				var hasShinyBait = (global.KSW_EquippedBaitID[playerNum] == global.KSW_BaitIDs[? "moreShinies"]);
@@ -637,6 +666,16 @@ if (!localPause)
 						catchInput_NextLineTimer = -1;
 						break;
 						
+						case KSW_CatchInputList.center:
+						scr_PlaySfx(snd_KSW_CatchInputUp);
+						
+						catchInput_SoundCount += 1;
+						catchInput_ATriggered = true;
+						failTimer = failTimerTarget;
+						
+						catchInput_NextLineTimer = -1;
+						break;
+						
 						case KSW_CatchInputList.wait:
 						catchInput_NextLineTimer = catchInput_NextLineTimerMax;
 						break;
@@ -696,7 +735,7 @@ if (!localPause)
 					catchInput_CurrentLine = -1;
 					catchInput_CurrentLineMax = -1;
 					catchInput_SfxIndex = 0;
-					findFishTimer = irandom_range(60,400 - ((global.KSW_EquippedBaitID[playerNum] == global.KSW_BaitIDs[? "fasterFinds"]) * 250));
+					findFishTimer = irandom_range(60,400 - ((global.KSW_EquippedBaitID[playerNum] == global.KSW_BaitIDs[? "fasterFinds"]) * 250) + ((global.KSW_EquippedBaitID[playerNum] == global.KSW_BaitIDs[? "slowerFinds"]) * 250));
 					
 					stateReadyTimer = -1;
 					break;

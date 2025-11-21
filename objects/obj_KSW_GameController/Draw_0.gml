@@ -91,6 +91,23 @@ if ((state == KSW_GameStates.waiting) or (state == KSW_GameStates.waiting_End) o
 	{
 		draw_sprite(spr_KSW_UI_CatchInput,0,198,64 + (2 * (buttonInputTimerComponent_RightTimer != -1)));
 	}
+	
+	if (global.KSW_EquippedBaitID[playerNum] == global.KSW_BaitIDs[? "centerInput"]) {
+	    if (catchInput_ATriggered)
+	    {
+	        draw_sprite(spr_KSW_UI_CatchInput_Active_Back, 0, 174, 64)
+	        var targetIcon = ds_map_find_value(global.UI_IconBindings, string(input_binding_get("A")))
+	        
+	        if (targetIcon != undefined)
+	            draw_sprite(targetIcon, 0, 169, 59 + (2 * (buttonInputTimerComponent_ATimer != -1)))
+	        
+	        draw_sprite(spr_KSW_UI_CatchInput_Active, bubbleIndex, 174, 64)
+	    }
+	    else
+	    {
+	        draw_sprite(spr_KSW_UI_CatchInput, 0, 174, 64 + (2 * (buttonInputTimerComponent_ATimer != -1)))
+	    }
+	}
 }
 #endregion
 

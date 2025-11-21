@@ -34,5 +34,9 @@ function scr_KSW_SetBaits()
 	scr_KSW_AddBait("moreShinies","Lifelight","More frequent anomalies!",spr_KSW_Bait_Icon_Lifelight,spr_KSW_Bait_Texture_Lifelight,glimmer,0,0,250);
 	scr_KSW_AddBait("moreGrams","Stone Chum","Heavier fish!",spr_KSW_Bait_Icon_StoneChum,spr_KSW_Bait_Texture_StoneChum,legion,0,0,100);
 	scr_KSW_AddBait("moreCoins","Baggie Candy","More coins!",spr_KSW_Bait_Icon_BaggieCandy,spr_KSW_Bait_Texture_BaggieCandy,borange,0,0,150);
+	scr_KSW_AddBait("increasedPity","Fishbook Page","More undiscovered fish!",spr_KSW_Bait_Icon_BaggieCandy,spr_KSW_Bait_Texture_BaggieCandy,borange,0,0,150);
+	scr_KSW_AddBait("centerInput","Click Bait","Extra input button!",spr_KSW_Bait_Icon_BaggieCandy,spr_KSW_Bait_Texture_BaggieCandy,mage,0,0,100);
+	scr_KSW_AddBait("slowerFinds","Calm Pepper","More waiting time!",spr_KSW_Bait_Icon_RushPepper,spr_KSW_Bait_Texture_RushPepper,candy,0,0,100);
+	scr_KSW_AddBait("grapeBait","Grapes","You can only catch Grapes",spr_KSW_Fish_Grapes,spr_KSW_Bait_Texture_BaggieCandy,flux,0,0,1);
 	#endregion
 }

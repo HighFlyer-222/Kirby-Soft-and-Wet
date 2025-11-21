@@ -704,5 +704,8 @@ function scr_KSW_SetFishes()
 	scr_KSW_AddFish("Electoon","Rayman",spr_KSW_Fish_Electoon,spr_KSW_Fish_Electoon_Pal,candy,1,creamCrevasse,KSW_Phases.day,4000,0,3);
 	scr_KSW_AddFish("Antitoon","Rayman",spr_KSW_Fish_Antitoon,spr_KSW_Fish_Antitoon_Pal,mage,1,creamCrevasse,KSW_Phases.night,4000,0,3);
 	#endregion
+	
+	scr_KSW_AddFish("Grapes","Kirby",spr_KSW_Fish_Grapes,spr_KSW_Fish_Grapes_Pal_Normal,flux,0,grassBeach,KSW_Phases.none,50);
+	
 	#endregion
 }

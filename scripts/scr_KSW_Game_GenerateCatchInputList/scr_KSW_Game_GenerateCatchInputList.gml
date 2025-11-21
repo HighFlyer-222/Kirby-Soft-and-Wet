@@ -8,6 +8,7 @@ function scr_KSW_Game_GenerateCatchInputList(playerNum,targeteRarity = 0)
 		down,
 		left,
 		right,
+		center,
 		wait
 	}
 	
@@ -20,7 +21,8 @@ function scr_KSW_Game_GenerateCatchInputList(playerNum,targeteRarity = 0)
 	
 	for (var i = 0; i < length; i++)
 	{
-		list[currentLine] = choose(KSW_CatchInputList.up,KSW_CatchInputList.down,KSW_CatchInputList.left,KSW_CatchInputList.right);
+		if (global.KSW_EquippedBaitID[playerNum] == global.KSW_BaitIDs[? "centerInput"]) list[currentLine] = choose(KSW_CatchInputList.up,KSW_CatchInputList.down,KSW_CatchInputList.left,KSW_CatchInputList.right, KSW_CatchInputList.center);
+		else list[currentLine] = choose(KSW_CatchInputList.up,KSW_CatchInputList.down,KSW_CatchInputList.left,KSW_CatchInputList.right);
 		currentLine += 1;
 		if (((i % 4) == 3) and (length != i + 1))
 		{
