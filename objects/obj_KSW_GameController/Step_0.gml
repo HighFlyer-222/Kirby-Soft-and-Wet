@@ -583,11 +583,16 @@ if (!localPause)
 				state = KSW_GameStates.catching;
 				
 				var pityRate = 3;
-				if (global.KSW_EquippedBaitID[playerNum] == global.KSW_BaitIDs[? "increasedPity"]) pityRate = 30;
+				var pityBait = global.KSW_EquippedBaitID[playerNum] == global.KSW_BaitIDs[? "increasedPity"]
+				if (pityBait) pityRate = 5;
 				for (var i = 0; i < pityRate; i++)
 				{
 					currentFish = currentFishPool[irandom_range(0,array_length(currentFishPool) - 1)];
-					if ((!global.KSW_FishList[currentFish].isCaught) or ((global.KSW_FishList[currentFish].isCaught != 0) and (!global.KSW_FishList[currentFish].isCaughtShiny))) break;
+					if (pityBait) {
+						if ((!global.KSW_FishList[currentFish].isCaught)) break;
+					} else {
+						if ((!global.KSW_FishList[currentFish].isCaught) or ((global.KSW_FishList[currentFish].isCaught != 0) and (!global.KSW_FishList[currentFish].isCaughtShiny))) break;
+					}
 				}
 				
 				if (global.KSW_DebugRig != -1) currentFish = global.KSW_DebugRig;
