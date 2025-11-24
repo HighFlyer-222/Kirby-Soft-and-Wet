@@ -37,6 +37,7 @@ function scr_KSW_SetBaits()
 	scr_KSW_AddBait("increasedPity","Fishbook Page","More undiscovered fish!",spr_KSW_Bait_Icon_BaggieCandy,spr_KSW_Bait_Texture_BaggieCandy,borange,0,0,150);
 	scr_KSW_AddBait("centerInput","Click Bait","Extra input button!",spr_KSW_Bait_Icon_BaggieCandy,spr_KSW_Bait_Texture_BaggieCandy,mage,0,0,100);
 	scr_KSW_AddBait("slowerFinds","Calm Pepper","More waiting time!",spr_KSW_Bait_Icon_RushPepper,spr_KSW_Bait_Texture_RushPepper,candy,0,0,100);
+	scr_KSW_AddBait("fasterInputs","Rush Pepper 2 (placeholder)","Faster inputs!",spr_KSW_Bait_Icon_RushPepper,spr_KSW_Bait_Texture_RushPepper,candy,0,0,1);
 	scr_KSW_AddBait("grapeBait","Grapes","You can only catch Grapes",spr_KSW_Fish_Grapes,spr_KSW_Bait_Texture_BaggieCandy,flux,0,0,1);
 	#endregion
 }

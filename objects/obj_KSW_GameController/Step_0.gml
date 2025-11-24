@@ -193,7 +193,7 @@ if (!localPause)
 				catchInput_RightTriggered = false;
 				catchInput_ATriggered = false;
 				
-				catchInput_NextLineTimer = catchInput_NextLineTimerMax;
+				catchInput_NextLineTimer = (global.KSW_EquippedBaitID[playerNum] == global.KSW_BaitIDs[? "fasterInputs"]) ? 1 : catchInput_NextLineTimerMax;
 				
 				failTimer = -1;
 				
@@ -695,7 +695,7 @@ if (!localPause)
 						break;
 						
 						case KSW_CatchInputList.wait:
-						catchInput_NextLineTimer = catchInput_NextLineTimerMax;
+						catchInput_NextLineTimer = (global.KSW_EquippedBaitID[playerNum] == global.KSW_BaitIDs[? "fasterInputs"]) ? 1 : catchInput_NextLineTimerMax;
 						break;
 					}
 				}

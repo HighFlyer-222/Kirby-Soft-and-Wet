@@ -15,7 +15,7 @@ function scr_KSW_Game_GenerateCatchInputList(playerNum,targeteRarity = 0)
 	var list = -1;
 	var currentLine = 0;
 	
-	var rarity = max(0,targeteRarity - (global.KSW_EquippedBaitID[playerNum] == global.KSW_BaitIDs[? "easyInputs"]));
+	var rarity = min(3,max(0,targeteRarity - (global.KSW_EquippedBaitID[playerNum] == global.KSW_BaitIDs[? "easyInputs"]) + (global.KSW_EquippedBaitID[playerNum] == global.KSW_BaitIDs[? "fasterInputs"])));
 	
 	var length = irandom_range(2 + (rarity * 2),3 + (rarity * 3));
 	
@@ -24,7 +24,7 @@ function scr_KSW_Game_GenerateCatchInputList(playerNum,targeteRarity = 0)
 		if (global.KSW_EquippedBaitID[playerNum] == global.KSW_BaitIDs[? "centerInput"]) list[currentLine] = choose(KSW_CatchInputList.up,KSW_CatchInputList.down,KSW_CatchInputList.left,KSW_CatchInputList.right, KSW_CatchInputList.center);
 		else list[currentLine] = choose(KSW_CatchInputList.up,KSW_CatchInputList.down,KSW_CatchInputList.left,KSW_CatchInputList.right);
 		currentLine += 1;
-		if (((i % 4) == 3) and (length != i + 1))
+		if (((i % 4) == 3) and (length != i + 1) and (global.KSW_EquippedBaitID[playerNum] != global.KSW_BaitIDs[? "fasterInputs"]))
 		{
 			list[currentLine] = KSW_CatchInputList.wait;
 			currentLine += 1;
